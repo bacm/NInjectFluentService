@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DocumentStoreTestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DocumentStoreTestModelStoreContainer">
+          <EntitySet Name="Folds" EntityType="DocumentStoreTestModel.Store.Folds" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="People" EntityType="DocumentStoreTestModel.Store.People" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_PersonAbsence" Association="DocumentStoreTestModel.Store.FK_PersonAbsence">
+            <End Role="People" EntitySet="People" />
+            <End Role="Folds" EntitySet="Folds" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Folds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Person_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <Association Name="FK_PersonAbsence">
+          <End Role="People" Type="DocumentStoreTestModel.Store.People" Multiplicity="1" />
+          <End Role="Folds" Type="DocumentStoreTestModel.Store.Folds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Folds">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DocumentStoreTestModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DocumentStoreTestEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="People" EntityType="DocumentStoreTestModel.Person" />
+          <EntitySet Name="Absences" EntityType="DocumentStoreTestModel.Absence" />
+          <AssociationSet Name="FK_PersonAbsence" Association="DocumentStoreTestModel.FK_PersonAbsence">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Fold" EntitySet="Absences" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Folds" Relationship="DocumentStoreTestModel.FK_PersonAbsence" FromRole="Person" ToRole="Fold" />
+        </EntityType>
+        <EntityType Name="Absence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Start" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="End" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Person_Id" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="DocumentStoreTestModel.FK_PersonAbsence" FromRole="Fold" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_PersonAbsence">
+          <End Type="DocumentStoreTestModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="DocumentStoreTestModel.Absence" Role="Fold" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fold">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DocumentStoreTestModelStoreContainer" CdmEntityContainer="DocumentStoreTestEntities">
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="DocumentStoreTestModel.Person">
+              <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Absences">
+            <EntityTypeMapping TypeName="DocumentStoreTestModel.Absence">
+              <MappingFragment StoreEntitySet="Folds">
+                <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
