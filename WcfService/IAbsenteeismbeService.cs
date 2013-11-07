@@ -3,7 +3,7 @@ using Absenteeismbe.Model;
 
 namespace WcfService
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IAbsenteeismbeServiceCallback))]
     public interface IAbsenteeismbeService
     {
         [OperationContract]

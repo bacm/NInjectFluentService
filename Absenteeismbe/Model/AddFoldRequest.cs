@@ -10,6 +10,9 @@ namespace Absenteeismbe.Model
         public int PersonId { get; set; }
 
         [DataMember]
+        public string Description { get; set; }
+
+        [DataMember]
         public DateTime Start { get; set; }
 
         [DataMember]

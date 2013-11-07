@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="adffe21e-9626-4a05-bff1-9f7a2074e7b7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a99a3af4-b9bc-4180-8370-1705634f4119" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
     <GenerateInternalTypes>false</GenerateInternalTypes>
-    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
     <CollectionMappings>
       <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
@@ -20,14 +20,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:55970/Service1.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:55970/AbsenteeismbeService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="e332a820-c1f3-4bde-b02d-d2f27991b797" SourceId="1" SourceUrl="http://localhost:55970/Service1.svc?disco" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="975b06b2-6a81-4300-a3b8-37781b7bc537" SourceId="1" SourceUrl="http://localhost:55970/Service1.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="bada5f00-b256-41c2-b042-c690ec585ff5" SourceId="1" SourceUrl="http://localhost:55970/Service1.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="2b901a1c-4ea8-4b8e-8075-5021ab0f35b8" SourceId="1" SourceUrl="http://localhost:55970/Service1.svc?xsd=xsd0" />
-    <MetadataFile FileName="AbsenteeismbeService.wsdl" MetadataType="Wsdl" ID="5c1a85c9-253f-4487-821d-3c9d489fdd22" SourceId="1" SourceUrl="http://localhost:55970/Service1.svc?wsdl" />
+    <MetadataFile FileName="AbsenteeismbeService.xsd" MetadataType="Schema" ID="c8e1df81-8584-474b-9001-bbdc7f5e03e9" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AbsenteeismbeService1.xsd" MetadataType="Schema" ID="83e65eec-bec5-4fe1-bc31-3f58bf192901" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AbsenteeismbeService.wsdl" MetadataType="Wsdl" ID="8dae3461-b336-4056-8df0-66cc0674c6af" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?wsdl" />
+    <MetadataFile FileName="AbsenteeismbeService2.xsd" MetadataType="Schema" ID="33a5a97f-8cd9-4acc-bea4-024c5153109e" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AbsenteeismbeService.disco" MetadataType="Disco" ID="2d393b3f-b8c3-4f37-ba49-84cb198d2b70" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

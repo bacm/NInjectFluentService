@@ -15,18 +15,21 @@ namespace Tests.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/WcfService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddFoldRequest", Namespace="http://schemas.datacontract.org/2004/07/Absenteeismbe.Model")]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class AddFoldRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private System.DateTime EndField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private int PersonIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +42,40 @@ namespace Tests.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public System.DateTime End {
             get {
-                return this.BoolValueField;
+                return this.EndField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((this.EndField.Equals(value) != true)) {
+                    this.EndField = value;
+                    this.RaisePropertyChanged("End");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public int PersonId {
             get {
-                return this.StringValueField;
+                return this.PersonIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((this.PersonIdField.Equals(value) != true)) {
+                    this.PersonIdField = value;
+                    this.RaisePropertyChanged("PersonId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Start {
+            get {
+                return this.StartField;
+            }
+            set {
+                if ((this.StartField.Equals(value) != true)) {
+                    this.StartField = value;
+                    this.RaisePropertyChanged("Start");
                 }
             }
         }
@@ -75,269 +91,190 @@ namespace Tests.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
-    public interface IService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IAbsenteeismbeService", CallbackContract=typeof(Tests.ServiceReference1.IAbsenteeismbeServiceCallback))]
+    public interface IAbsenteeismbeService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        Tests.ServiceReference1.GetDataResponse GetData(Tests.ServiceReference1.GetDataRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsenteeismbeService/AddAbsence", ReplyAction="http://tempuri.org/IAbsenteeismbeService/AddAbsenceResponse")]
+        Tests.ServiceReference1.AddAbsenceResponse AddAbsence(Tests.ServiceReference1.AddAbsenceRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        System.IAsyncResult BeginGetData(Tests.ServiceReference1.GetDataRequest request, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IAbsenteeismbeService/AddAbsence", ReplyAction="http://tempuri.org/IAbsenteeismbeService/AddAbsenceResponse")]
+        System.IAsyncResult BeginAddAbsence(Tests.ServiceReference1.AddAbsenceRequest request, System.AsyncCallback callback, object asyncState);
         
-        Tests.ServiceReference1.GetDataResponse EndGetData(System.IAsyncResult result);
+        Tests.ServiceReference1.AddAbsenceResponse EndAddAbsence(System.IAsyncResult result);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IAbsenteeismbeServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        Tests.ServiceReference1.GetDataUsingDataContractResponse GetDataUsingDataContract(Tests.ServiceReference1.GetDataUsingDataContractRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsenteeismbeService/OnCallback", ReplyAction="http://tempuri.org/IAbsenteeismbeService/OnCallbackResponse")]
+        Tests.ServiceReference1.OnCallbackResponse OnCallback(Tests.ServiceReference1.OnCallbackSolicit request);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.IAsyncResult BeginGetDataUsingDataContract(Tests.ServiceReference1.GetDataUsingDataContractRequest request, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IAbsenteeismbeService/OnCallback", ReplyAction="http://tempuri.org/IAbsenteeismbeService/OnCallbackResponse")]
+        System.IAsyncResult BeginOnCallback(Tests.ServiceReference1.OnCallbackSolicit request, System.AsyncCallback callback, object asyncState);
         
-        Tests.ServiceReference1.GetDataUsingDataContractResponse EndGetDataUsingDataContract(System.IAsyncResult result);
+        Tests.ServiceReference1.OnCallbackResponse EndOnCallback(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetData", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetDataRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsence", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddAbsenceRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public int value;
+        public Tests.ServiceReference1.AddFoldRequest request;
         
-        public GetDataRequest() {
+        public AddAbsenceRequest() {
         }
         
-        public GetDataRequest(int value) {
-            this.value = value;
+        public AddAbsenceRequest(Tests.ServiceReference1.AddFoldRequest request) {
+            this.request = request;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDataResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetDataResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsenceResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddAbsenceResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string GetDataResult;
+        public string AddAbsenceResult;
         
-        public GetDataResponse() {
+        public AddAbsenceResponse() {
         }
         
-        public GetDataResponse(string GetDataResult) {
-            this.GetDataResult = GetDataResult;
+        public AddAbsenceResponse(string AddAbsenceResult) {
+            this.AddAbsenceResult = AddAbsenceResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDataUsingDataContract", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetDataUsingDataContractRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="OnCallback", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class OnCallbackSolicit {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Tests.ServiceReference1.CompositeType composite;
+        public string status;
         
-        public GetDataUsingDataContractRequest() {
+        public OnCallbackSolicit() {
         }
         
-        public GetDataUsingDataContractRequest(Tests.ServiceReference1.CompositeType composite) {
-            this.composite = composite;
+        public OnCallbackSolicit(string status) {
+            this.status = status;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDataUsingDataContractResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetDataUsingDataContractResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="OnCallbackResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class OnCallbackResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Tests.ServiceReference1.CompositeType GetDataUsingDataContractResult;
-        
-        public GetDataUsingDataContractResponse() {
-        }
-        
-        public GetDataUsingDataContractResponse(Tests.ServiceReference1.CompositeType GetDataUsingDataContractResult) {
-            this.GetDataUsingDataContractResult = GetDataUsingDataContractResult;
+        public OnCallbackResponse() {
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : Tests.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
+    public interface IAbsenteeismbeServiceChannel : Tests.ServiceReference1.IAbsenteeismbeService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class AddAbsenceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public AddAbsenceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public Tests.ServiceReference1.GetDataResponse Result {
+        public Tests.ServiceReference1.AddAbsenceResponse Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((Tests.ServiceReference1.GetDataResponse)(this.results[0]));
+                return ((Tests.ServiceReference1.AddAbsenceResponse)(this.results[0]));
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetDataUsingDataContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class AbsenteeismbeServiceClient : System.ServiceModel.DuplexClientBase<Tests.ServiceReference1.IAbsenteeismbeService>, Tests.ServiceReference1.IAbsenteeismbeService {
         
-        private object[] results;
+        private BeginOperationDelegate onBeginAddAbsenceDelegate;
         
-        public GetDataUsingDataContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
+        private EndOperationDelegate onEndAddAbsenceDelegate;
+        
+        private System.Threading.SendOrPostCallback onAddAbsenceCompletedDelegate;
+        
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public Tests.ServiceReference1.GetDataUsingDataContractResponse Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Tests.ServiceReference1.GetDataUsingDataContractResponse)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<Tests.ServiceReference1.IService1>, Tests.ServiceReference1.IService1 {
-        
-        private BeginOperationDelegate onBeginGetDataDelegate;
-        
-        private EndOperationDelegate onEndGetDataDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetDataCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetDataUsingDataContractDelegate;
-        
-        private EndOperationDelegate onEndGetDataUsingDataContractDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetDataUsingDataContractCompletedDelegate;
-        
-        public Service1Client() {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public Service1Client(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
+        public event System.EventHandler<AddAbsenceCompletedEventArgs> AddAbsenceCompleted;
         
-        public event System.EventHandler<GetDataCompletedEventArgs> GetDataCompleted;
-        
-        public event System.EventHandler<GetDataUsingDataContractCompletedEventArgs> GetDataUsingDataContractCompleted;
-        
-        public Tests.ServiceReference1.GetDataResponse GetData(Tests.ServiceReference1.GetDataRequest request) {
-            return base.Channel.GetData(request);
+        public Tests.ServiceReference1.AddAbsenceResponse AddAbsence(Tests.ServiceReference1.AddAbsenceRequest request) {
+            return base.Channel.AddAbsence(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetData(Tests.ServiceReference1.GetDataRequest request, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetData(request, callback, asyncState);
+        public System.IAsyncResult BeginAddAbsence(Tests.ServiceReference1.AddAbsenceRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAddAbsence(request, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Tests.ServiceReference1.GetDataResponse EndGetData(System.IAsyncResult result) {
-            return base.Channel.EndGetData(result);
+        public Tests.ServiceReference1.AddAbsenceResponse EndAddAbsence(System.IAsyncResult result) {
+            return base.Channel.EndAddAbsence(result);
         }
         
-        private System.IAsyncResult OnBeginGetData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            Tests.ServiceReference1.GetDataRequest request = ((Tests.ServiceReference1.GetDataRequest)(inValues[0]));
-            return this.BeginGetData(request, callback, asyncState);
+        private System.IAsyncResult OnBeginAddAbsence(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Tests.ServiceReference1.AddAbsenceRequest request = ((Tests.ServiceReference1.AddAbsenceRequest)(inValues[0]));
+            return this.BeginAddAbsence(request, callback, asyncState);
         }
         
-        private object[] OnEndGetData(System.IAsyncResult result) {
-            Tests.ServiceReference1.GetDataResponse retVal = this.EndGetData(result);
+        private object[] OnEndAddAbsence(System.IAsyncResult result) {
+            Tests.ServiceReference1.AddAbsenceResponse retVal = this.EndAddAbsence(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetDataCompleted(object state) {
-            if ((this.GetDataCompleted != null)) {
+        private void OnAddAbsenceCompleted(object state) {
+            if ((this.AddAbsenceCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetDataCompleted(this, new GetDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.AddAbsenceCompleted(this, new AddAbsenceCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetDataAsync(Tests.ServiceReference1.GetDataRequest request) {
-            this.GetDataAsync(request, null);
+        public void AddAbsenceAsync(Tests.ServiceReference1.AddAbsenceRequest request) {
+            this.AddAbsenceAsync(request, null);
         }
         
-        public void GetDataAsync(Tests.ServiceReference1.GetDataRequest request, object userState) {
-            if ((this.onBeginGetDataDelegate == null)) {
-                this.onBeginGetDataDelegate = new BeginOperationDelegate(this.OnBeginGetData);
+        public void AddAbsenceAsync(Tests.ServiceReference1.AddAbsenceRequest request, object userState) {
+            if ((this.onBeginAddAbsenceDelegate == null)) {
+                this.onBeginAddAbsenceDelegate = new BeginOperationDelegate(this.OnBeginAddAbsence);
             }
-            if ((this.onEndGetDataDelegate == null)) {
-                this.onEndGetDataDelegate = new EndOperationDelegate(this.OnEndGetData);
+            if ((this.onEndAddAbsenceDelegate == null)) {
+                this.onEndAddAbsenceDelegate = new EndOperationDelegate(this.OnEndAddAbsence);
             }
-            if ((this.onGetDataCompletedDelegate == null)) {
-                this.onGetDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDataCompleted);
+            if ((this.onAddAbsenceCompletedDelegate == null)) {
+                this.onAddAbsenceCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddAbsenceCompleted);
             }
-            base.InvokeAsync(this.onBeginGetDataDelegate, new object[] {
-                        request}, this.onEndGetDataDelegate, this.onGetDataCompletedDelegate, userState);
-        }
-        
-        public Tests.ServiceReference1.GetDataUsingDataContractResponse GetDataUsingDataContract(Tests.ServiceReference1.GetDataUsingDataContractRequest request) {
-            return base.Channel.GetDataUsingDataContract(request);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetDataUsingDataContract(Tests.ServiceReference1.GetDataUsingDataContractRequest request, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetDataUsingDataContract(request, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Tests.ServiceReference1.GetDataUsingDataContractResponse EndGetDataUsingDataContract(System.IAsyncResult result) {
-            return base.Channel.EndGetDataUsingDataContract(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetDataUsingDataContract(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            Tests.ServiceReference1.GetDataUsingDataContractRequest request = ((Tests.ServiceReference1.GetDataUsingDataContractRequest)(inValues[0]));
-            return this.BeginGetDataUsingDataContract(request, callback, asyncState);
-        }
-        
-        private object[] OnEndGetDataUsingDataContract(System.IAsyncResult result) {
-            Tests.ServiceReference1.GetDataUsingDataContractResponse retVal = this.EndGetDataUsingDataContract(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetDataUsingDataContractCompleted(object state) {
-            if ((this.GetDataUsingDataContractCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetDataUsingDataContractCompleted(this, new GetDataUsingDataContractCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetDataUsingDataContractAsync(Tests.ServiceReference1.GetDataUsingDataContractRequest request) {
-            this.GetDataUsingDataContractAsync(request, null);
-        }
-        
-        public void GetDataUsingDataContractAsync(Tests.ServiceReference1.GetDataUsingDataContractRequest request, object userState) {
-            if ((this.onBeginGetDataUsingDataContractDelegate == null)) {
-                this.onBeginGetDataUsingDataContractDelegate = new BeginOperationDelegate(this.OnBeginGetDataUsingDataContract);
-            }
-            if ((this.onEndGetDataUsingDataContractDelegate == null)) {
-                this.onEndGetDataUsingDataContractDelegate = new EndOperationDelegate(this.OnEndGetDataUsingDataContract);
-            }
-            if ((this.onGetDataUsingDataContractCompletedDelegate == null)) {
-                this.onGetDataUsingDataContractCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDataUsingDataContractCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetDataUsingDataContractDelegate, new object[] {
-                        request}, this.onEndGetDataUsingDataContractDelegate, this.onGetDataUsingDataContractCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginAddAbsenceDelegate, new object[] {
+                        request}, this.onEndAddAbsenceDelegate, this.onAddAbsenceCompletedDelegate, userState);
         }
     }
 }

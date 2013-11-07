@@ -11,7 +11,8 @@ namespace Tests.Windows.Communication
         [TestMethod]
         public void it_should_be_able_to_create_a_client_proxy()
         {
-            using (var client = new Service1Client())
+            using (var client = new AbsenteeismbeServiceClient(
+                new InstanceContext(new AbsenteeismbeServiceCallbackTest())))
             {
                 Assert.IsTrue(client.State == CommunicationState.Created);
             }
@@ -20,11 +21,12 @@ namespace Tests.Windows.Communication
         [TestMethod]
         public void it_should_be_able_to_call_some_method_using_async()
         {
-            using (var client = new Service1Client())
+            using (var client = new AbsenteeismbeServiceClient(
+                new InstanceContext(new AbsenteeismbeServiceCallbackTest())))
             {
                 string someValue = null;
 
-                var result = client.BeginGetData(new GetDataRequest(5), 
+                var result = client.BeginAddAbsence(new AddAbsenceRequest(new AddFoldRequest()), 
                     ar => someValue = string.Empty, null);
 
                 while (!result.IsCompleted)

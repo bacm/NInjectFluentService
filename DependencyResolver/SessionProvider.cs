@@ -7,7 +7,7 @@ namespace DependencyResolver
     public class SessionProvider : IProvider
     {
         private static readonly CustomConfiguration Configuration =
-            new InMemoryCustomConfiguration();
+            new MsSql2008CustomConfiguration();
 
         public SessionProvider()
         {

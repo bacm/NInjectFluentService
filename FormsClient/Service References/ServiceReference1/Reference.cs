@@ -23,6 +23,9 @@ namespace FormsClient.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime EndField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -38,6 +41,19 @@ namespace FormsClient.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
             }
         }
         
@@ -91,48 +107,28 @@ namespace FormsClient.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IAbsenteeismbeService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IAbsenteeismbeService", CallbackContract=typeof(FormsClient.ServiceReference1.IAbsenteeismbeServiceCallback))]
     public interface IAbsenteeismbeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsenteeismbeService/AddAbsence", ReplyAction="http://tempuri.org/IAbsenteeismbeService/AddAbsenceResponse")]
-        FormsClient.ServiceReference1.AddAbsenceResponse AddAbsence(FormsClient.ServiceReference1.AddAbsenceRequest request);
+        string AddAbsence(FormsClient.ServiceReference1.AddFoldRequest request);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IAbsenteeismbeService/AddAbsence", ReplyAction="http://tempuri.org/IAbsenteeismbeService/AddAbsenceResponse")]
-        System.IAsyncResult BeginAddAbsence(FormsClient.ServiceReference1.AddAbsenceRequest request, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginAddAbsence(FormsClient.ServiceReference1.AddFoldRequest request, System.AsyncCallback callback, object asyncState);
         
-        FormsClient.ServiceReference1.AddAbsenceResponse EndAddAbsence(System.IAsyncResult result);
+        string EndAddAbsence(System.IAsyncResult result);
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsence", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddAbsenceRequest {
+    public interface IAbsenteeismbeServiceCallback {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public FormsClient.ServiceReference1.AddFoldRequest request;
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAbsenteeismbeService/OnCallback")]
+        void OnCallback(string status);
         
-        public AddAbsenceRequest() {
-        }
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, AsyncPattern=true, Action="http://tempuri.org/IAbsenteeismbeService/OnCallback")]
+        System.IAsyncResult BeginOnCallback(string status, System.AsyncCallback callback, object asyncState);
         
-        public AddAbsenceRequest(FormsClient.ServiceReference1.AddFoldRequest request) {
-            this.request = request;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsenceResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class AddAbsenceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string AddAbsenceResult;
-        
-        public AddAbsenceResponse() {
-        }
-        
-        public AddAbsenceResponse(string AddAbsenceResult) {
-            this.AddAbsenceResult = AddAbsenceResult;
-        }
+        void EndOnCallback(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,17 +146,17 @@ namespace FormsClient.ServiceReference1 {
             this.results = results;
         }
         
-        public FormsClient.ServiceReference1.AddAbsenceResponse Result {
+        public string Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((FormsClient.ServiceReference1.AddAbsenceResponse)(this.results[0]));
+                return ((string)(this.results[0]));
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AbsenteeismbeServiceClient : System.ServiceModel.ClientBase<FormsClient.ServiceReference1.IAbsenteeismbeService>, FormsClient.ServiceReference1.IAbsenteeismbeService {
+    public partial class AbsenteeismbeServiceClient : System.ServiceModel.DuplexClientBase<FormsClient.ServiceReference1.IAbsenteeismbeService>, FormsClient.ServiceReference1.IAbsenteeismbeService {
         
         private BeginOperationDelegate onBeginAddAbsenceDelegate;
         
@@ -168,48 +164,49 @@ namespace FormsClient.ServiceReference1 {
         
         private System.Threading.SendOrPostCallback onAddAbsenceCompletedDelegate;
         
-        public AbsenteeismbeServiceClient() {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public AbsenteeismbeServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public AbsenteeismbeServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public AbsenteeismbeServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public AbsenteeismbeServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public event System.EventHandler<AddAbsenceCompletedEventArgs> AddAbsenceCompleted;
         
-        public FormsClient.ServiceReference1.AddAbsenceResponse AddAbsence(FormsClient.ServiceReference1.AddAbsenceRequest request) {
+        public string AddAbsence(FormsClient.ServiceReference1.AddFoldRequest request) {
             return base.Channel.AddAbsence(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginAddAbsence(FormsClient.ServiceReference1.AddAbsenceRequest request, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginAddAbsence(FormsClient.ServiceReference1.AddFoldRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginAddAbsence(request, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public FormsClient.ServiceReference1.AddAbsenceResponse EndAddAbsence(System.IAsyncResult result) {
+        public string EndAddAbsence(System.IAsyncResult result) {
             return base.Channel.EndAddAbsence(result);
         }
         
         private System.IAsyncResult OnBeginAddAbsence(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            FormsClient.ServiceReference1.AddAbsenceRequest request = ((FormsClient.ServiceReference1.AddAbsenceRequest)(inValues[0]));
+            FormsClient.ServiceReference1.AddFoldRequest request = ((FormsClient.ServiceReference1.AddFoldRequest)(inValues[0]));
             return this.BeginAddAbsence(request, callback, asyncState);
         }
         
         private object[] OnEndAddAbsence(System.IAsyncResult result) {
-            FormsClient.ServiceReference1.AddAbsenceResponse retVal = this.EndAddAbsence(result);
+            string retVal = this.EndAddAbsence(result);
             return new object[] {
                     retVal};
         }
@@ -221,11 +218,11 @@ namespace FormsClient.ServiceReference1 {
             }
         }
         
-        public void AddAbsenceAsync(FormsClient.ServiceReference1.AddAbsenceRequest request) {
+        public void AddAbsenceAsync(FormsClient.ServiceReference1.AddFoldRequest request) {
             this.AddAbsenceAsync(request, null);
         }
         
-        public void AddAbsenceAsync(FormsClient.ServiceReference1.AddAbsenceRequest request, object userState) {
+        public void AddAbsenceAsync(FormsClient.ServiceReference1.AddFoldRequest request, object userState) {
             if ((this.onBeginAddAbsenceDelegate == null)) {
                 this.onBeginAddAbsenceDelegate = new BeginOperationDelegate(this.OnBeginAddAbsence);
             }
