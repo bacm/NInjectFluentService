@@ -117,6 +117,16 @@ namespace FormsClient.ServiceReference1 {
         System.IAsyncResult BeginAddAbsence(FormsClient.ServiceReference1.AddFoldRequest request, System.AsyncCallback callback, object asyncState);
         
         string EndAddAbsence(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsenteeismbeService/Search", ReplyAction="http://tempuri.org/IAbsenteeismbeService/SearchResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FormsClient.ServiceReference1.AddFoldRequest))]
+        System.Collections.Generic.List<object> Search(System.Collections.Generic.List<object> specifications);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IAbsenteeismbeService/Search", ReplyAction="http://tempuri.org/IAbsenteeismbeService/SearchResponse")]
+        System.IAsyncResult BeginSearch(System.Collections.Generic.List<object> specifications, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<object> EndSearch(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -156,6 +166,25 @@ namespace FormsClient.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SearchCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SearchCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<object> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<object>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class AbsenteeismbeServiceClient : System.ServiceModel.DuplexClientBase<FormsClient.ServiceReference1.IAbsenteeismbeService>, FormsClient.ServiceReference1.IAbsenteeismbeService {
         
         private BeginOperationDelegate onBeginAddAbsenceDelegate;
@@ -163,6 +192,12 @@ namespace FormsClient.ServiceReference1 {
         private EndOperationDelegate onEndAddAbsenceDelegate;
         
         private System.Threading.SendOrPostCallback onAddAbsenceCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSearchDelegate;
+        
+        private EndOperationDelegate onEndSearchDelegate;
+        
+        private System.Threading.SendOrPostCallback onSearchCompletedDelegate;
         
         public AbsenteeismbeServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -185,6 +220,8 @@ namespace FormsClient.ServiceReference1 {
         }
         
         public event System.EventHandler<AddAbsenceCompletedEventArgs> AddAbsenceCompleted;
+        
+        public event System.EventHandler<SearchCompletedEventArgs> SearchCompleted;
         
         public string AddAbsence(FormsClient.ServiceReference1.AddFoldRequest request) {
             return base.Channel.AddAbsence(request);
@@ -234,6 +271,56 @@ namespace FormsClient.ServiceReference1 {
             }
             base.InvokeAsync(this.onBeginAddAbsenceDelegate, new object[] {
                         request}, this.onEndAddAbsenceDelegate, this.onAddAbsenceCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<object> Search(System.Collections.Generic.List<object> specifications) {
+            return base.Channel.Search(specifications);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginSearch(System.Collections.Generic.List<object> specifications, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSearch(specifications, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<object> EndSearch(System.IAsyncResult result) {
+            return base.Channel.EndSearch(result);
+        }
+        
+        private System.IAsyncResult OnBeginSearch(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Collections.Generic.List<object> specifications = ((System.Collections.Generic.List<object>)(inValues[0]));
+            return this.BeginSearch(specifications, callback, asyncState);
+        }
+        
+        private object[] OnEndSearch(System.IAsyncResult result) {
+            System.Collections.Generic.List<object> retVal = this.EndSearch(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSearchCompleted(object state) {
+            if ((this.SearchCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SearchCompleted(this, new SearchCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SearchAsync(System.Collections.Generic.List<object> specifications) {
+            this.SearchAsync(specifications, null);
+        }
+        
+        public void SearchAsync(System.Collections.Generic.List<object> specifications, object userState) {
+            if ((this.onBeginSearchDelegate == null)) {
+                this.onBeginSearchDelegate = new BeginOperationDelegate(this.OnBeginSearch);
+            }
+            if ((this.onEndSearchDelegate == null)) {
+                this.onEndSearchDelegate = new EndOperationDelegate(this.OnEndSearch);
+            }
+            if ((this.onSearchCompletedDelegate == null)) {
+                this.onSearchCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSearchCompleted);
+            }
+            base.InvokeAsync(this.onBeginSearchDelegate, new object[] {
+                        specifications}, this.onEndSearchDelegate, this.onSearchCompletedDelegate, userState);
         }
     }
 }

@@ -42,6 +42,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\Tests\bin\Debug\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -52,10 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Specifications\AndSpecification.cs" />
     <Compile Include="Connection\CustomConfiguration.cs" />
     <Compile Include="Connection\ICustomConfiguration.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="ISpecification.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\NotSpecification.cs" />
+    <Compile Include="Specifications\OrSpecification.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Connection\SessionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

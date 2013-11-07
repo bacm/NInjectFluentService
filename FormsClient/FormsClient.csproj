@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +96,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference1\AbsenteeismbeService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\AbsenteeismbeService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\AbsenteeismbeService4.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

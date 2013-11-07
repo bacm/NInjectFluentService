@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a99a3af4-b9bc-4180-8370-1705634f4119" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e7f71574-ff91-47c2-8cf9-0eade04fc2b9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,11 +23,12 @@
     <MetadataSource Address="http://localhost:55970/AbsenteeismbeService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AbsenteeismbeService.xsd" MetadataType="Schema" ID="c8e1df81-8584-474b-9001-bbdc7f5e03e9" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd2" />
-    <MetadataFile FileName="AbsenteeismbeService1.xsd" MetadataType="Schema" ID="83e65eec-bec5-4fe1-bc31-3f58bf192901" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd1" />
-    <MetadataFile FileName="AbsenteeismbeService.wsdl" MetadataType="Wsdl" ID="8dae3461-b336-4056-8df0-66cc0674c6af" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?wsdl" />
-    <MetadataFile FileName="AbsenteeismbeService2.xsd" MetadataType="Schema" ID="33a5a97f-8cd9-4acc-bea4-024c5153109e" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd0" />
-    <MetadataFile FileName="AbsenteeismbeService.disco" MetadataType="Disco" ID="2d393b3f-b8c3-4f37-ba49-84cb198d2b70" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?disco" />
+    <MetadataFile FileName="AbsenteeismbeService1.xsd" MetadataType="Schema" ID="82012bac-2387-4a2d-a6f3-7e4ed2d77e0c" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AbsenteeismbeService2.xsd" MetadataType="Schema" ID="4b5dd86f-3856-412c-a646-fa5699e8f55f" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AbsenteeismbeService.wsdl" MetadataType="Wsdl" ID="c4641dac-b30e-489e-91bf-e56726b01dfc" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?wsdl" />
+    <MetadataFile FileName="AbsenteeismbeService.disco" MetadataType="Disco" ID="144eb33d-88f8-4784-89d2-58de2c38dfea" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?disco" />
+    <MetadataFile FileName="AbsenteeismbeService3.xsd" MetadataType="Schema" ID="062e8b7c-d583-4792-bd65-48f73f96c80c" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AbsenteeismbeService4.xsd" MetadataType="Schema" ID="fe52e64e-b081-4f61-a4cb-89888b778de6" SourceId="1" SourceUrl="http://localhost:55970/AbsenteeismbeService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -6,8 +6,8 @@ namespace DependencyResolver
 {
     public class SessionProvider : IProvider
     {
-        private static readonly CustomConfiguration Configuration =
-            new MsSql2008CustomConfiguration();
+        private static readonly SessionFactory SessionFactory =
+            new SessionFactory(new MsSql2008CustomConfiguration());
 
         public SessionProvider()
         {
@@ -16,7 +16,7 @@ namespace DependencyResolver
 
         public object Create(IContext context)
         {
-            return new SessionFactory(Configuration).CreateSession();
+            return SessionFactory.CreateSession();
         }
 
         public Type Type { get; private set; }

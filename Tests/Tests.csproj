@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DependencyResolver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DependencyResolver\bin\Debug\DependencyResolver.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -123,10 +127,6 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{0DEF332B-4838-4E5A-A0F0-E188D7C73B0C}</Project>
       <Name>DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DependencyResolver\DependencyResolver.csproj">
-      <Project>{977B46C0-5CD1-42EE-A584-F17E76CA60EA}</Project>
-      <Name>DependencyResolver</Name>
     </ProjectReference>
     <ProjectReference Include="..\Extensions\Extensions.csproj">
       <Project>{d14539b0-4549-4930-b87c-d13d40db8138}</Project>

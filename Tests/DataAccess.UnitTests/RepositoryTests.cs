@@ -1,6 +1,7 @@
 ﻿using System;
 using DataAccess;
 using DataAccess.Connection;
+using DataAccess.Specifications;
 using DependencyResolver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
@@ -12,7 +13,7 @@ namespace Tests.DataAccess.UnitTests
     public class RepositoryTests
     {
         private ISession _session;
-        private ISpecification<object> _specification;
+        private ISpecification _specification;
 
         private Repository<object> _repository;
         private readonly SessionFactory _factory;
@@ -26,7 +27,7 @@ namespace Tests.DataAccess.UnitTests
         public void Setup()
         {
             _session = _factory.CreateSession();
-            _specification = MockRepository.GenerateMock<ISpecification<object>>();
+            _specification = MockRepository.GenerateMock<ISpecification>();
             _repository = new Repository<object>(_session);
         }
 
@@ -41,7 +42,7 @@ namespace Tests.DataAccess.UnitTests
         [ExpectedException(typeof(InvalidOperationException))]
         public void calling_single_with_unmatched_spefication_should_throw()
         {
-            _specification.Expect(x => x.IsSatisfiedBy(null)).Return(false);
+            _specification.Expect(x => x.IsSatisfiedBy<object>(null)).Return(false);
             _repository.Single(_specification);
         }
     }

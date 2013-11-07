@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.Windows.Forms;
 using FormsClient.ServiceReference1;
@@ -32,6 +33,7 @@ namespace FormsClient
                 if (_client.State == CommunicationState.Opened)
                 {
                     _client.Close();
+                    (_client as IDisposable).Dispose();
                 } 
             }
             finally
@@ -45,6 +47,12 @@ namespace FormsClient
             _client = new AbsenteeismbeServiceClient(new InstanceContext(this));
 
             _client.AddAbsenceCompleted += (o, args) => DisplayAddFoldResult(args);
+            _client.SearchCompleted += (o, args) => DisplaySearchResults(args.Result);
+        }
+
+        private void DisplaySearchResults(List<object> result)
+        {
+            
         }
 
         private void DisplayAddFoldResult(AddAbsenceCompletedEventArgs e)
@@ -71,6 +79,7 @@ namespace FormsClient
                 };
 
             _client.AddAbsenceAsync(addFold);
+            _client.SearchAsync(new List<CompositeSpecification>());
 
             btnSubmit.Enabled = false;
             toolStripStatus.Text = @"Status";

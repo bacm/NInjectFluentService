@@ -35,9 +35,12 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbsenceAdderLogic.cs" />
-    <Compile Include="IAbsenceAdderLogic.cs" />
+    <Compile Include="AbsenceModelFactory.cs" />
+    <Compile Include="AbsenceUnitOfWork.cs" />
+    <Compile Include="IAbsenceUnitOfWork.cs" />
     <Compile Include="Model\AddFoldRequest.cs" />
+    <Compile Include="IAbsenceModelFactory.cs" />
+    <Compile Include="PersonNameSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
